@@ -1,0 +1,49 @@
+Child's Height Prediction 
+========================================================
+author: Tianxing Li
+date: `r format(Sys.Date(), format="%B %d %Y")`
+
+Training Data
+========================================================
+
+The training data comes from Galton's height data for parents and children.
+
+The data set was used by Galton in 1885 to study the relationship between a parent's height and their childrens.
+
+
+Training data
+========================================================
+
+The data can be loaded with:
+
+```{r}
+library(UsingR)
+data(galton)
+summary(galton)
+```
+
+
+About midparent height
+========================================================
+
+The "parent" variable in Galton's data set means the midparent's height is an average of the fathers height and 1.08 times the mother's. 
+
+The app requires both father and mother's height, and then compute the midparent height for prediction.
+
+
+Model Selection
+========================================================
+
+This prediction uses a linear model to predict a child's height based on his/her parents' height.
+
+```{r, echo=FALSE}
+library(ggplot2)
+library(caret)
+
+qplot(parent, child, data=galton, geom="jitter") + stat_smooth(method=lm, formula=y~x)
+```
+
+
+
+
+
