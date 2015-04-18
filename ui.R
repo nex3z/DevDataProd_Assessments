@@ -15,13 +15,7 @@ shinyUI(
     
     mainPanel(
       h3("Results of prediction"),
-      
-#       h4("Father's height (cm): "),
-#       verbatimTextOutput("inputFatherHeight"),
-#       
-#       h4("Mother's height (cm): "),
-#       verbatimTextOutput("inputMotherHeight"),
-      
+           
       h4("Midparent height (cm): "),
       verbatimTextOutput("midparentHeight"),
       

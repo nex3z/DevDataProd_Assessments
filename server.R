@@ -1,9 +1,15 @@
 library(shiny)
+library(caret)
 
-diabetesRisk <- function(fatherHeight) fatherHeight / 200
+load("model1.rda")
 
 getMidParehtHeight <- function(fatherHeight, motherHeight) {
   return ((fatherHeight + 1.08 * motherHeight) / 2)
+}
+
+predictChildHeight <- function(midParentHeight) {
+  height <- predict(modelFit, newdata=data.frame(parent= midParentHeight))
+  return (height)
 }
 
 shinyServer(
@@ -14,6 +20,7 @@ shinyServer(
     output$midparentHeight <- renderPrint({
       getMidParehtHeight(input$fatherHeight, input$motherHeight)})
     
-    output$prediction <- renderPrint({diabetesRisk(input$fatherHeight)})
+    output$prediction <- renderPrint({predictChildHeight(getMidParehtHeight(
+      input$fatherHeight, input$motherHeight))})
   }
 )
