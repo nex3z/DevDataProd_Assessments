@@ -6,9 +6,14 @@ shinyUI(
     headerPanel("Child's Height Prediction"),
     
     sidebarPanel(
-      numericInput("fatherHeight", "Father's height (cm): ", 160, min = 0, 
+      p("Steps: "),
+      p("1. Enter parents' height"),
+      p("2. Press \"Predict\" button."),
+      p("3. The prediction will be shown on the main panel."),
+      
+      numericInput("fatherHeight", "Father's height (cm): ", 170, min = 0, 
                    max = 300, step = 1),
-      numericInput("motherHeight", "Mother's height (cm): ", 160, min = 0, 
+      numericInput("motherHeight", "Mother's height (cm): ", 170, min = 0, 
                    max = 300, step = 1),
       submitButton("Predict")
     ),
